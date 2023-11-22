@@ -14,6 +14,7 @@
 
 ## Table of Contents
 
+- [Demo](#demo)
 - [Features](#features)
 - [Installation](#getting-started)
 - [How to Play](#how-to-play)
@@ -23,6 +24,12 @@
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
+
+## Demo
+
+[Live Demo](https://ramazancetinkaya.github.io/tictactoe/)
+
+Good luck, have fun!
 
 ## Features
 

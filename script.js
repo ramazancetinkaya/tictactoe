@@ -104,8 +104,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const makeAIMove = () => {
-        const bestMove = getBestMove();
+        let bestMove;
+
+        // Rastgele bir hamle yapılacak ilk tur
+        if (board.filter(cell => cell !== '').length === 1) {
+            bestMove = getRandomMove();
+        } else {
+            // İlerleyen turlarda stratejik hamle yapılacak
+            bestMove = getBestMove();
+        }
+
         handleCellClick(bestMove);
+    };
+
+    const getRandomMove = () => {
+        const emptyCells = board.reduce((acc, cell, index) => {
+            if (cell === '') {
+                acc.push(index);
+            }
+            return acc;
+        }, []);
+
+        const randomIndex = Math.floor(Math.random() * emptyCells.length);
+        return emptyCells[randomIndex];
     };
 
     const getBestMove = () => {
@@ -137,7 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const winner = checkWinner();
         if (winner !== null) {
-            return scores[winner];
+            return scores[winner] / depth;
+        }
+
+        if (isTerminal()) {
+            return 0;
         }
 
         if (isMaximizing) {
@@ -170,6 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const cellElement = boardElement.children[i];
             cellElement.classList.remove('winner');
         }
+    };
+
+    const isTerminal = () => {
+        return checkWinner() !== null || board.every(cell => cell !== '');
     };
 
     modeSelector.addEventListener('change', () => {

@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                 updateTurn();
-                if (playerMode === 'pva' && currentPlayer === 'O') {
+                if ((playerMode === 'pva' && currentPlayer === 'O') || 
+                (playerMode === 'avp' && currentPlayer === 'O')) {
                     makeAIMove();
                 }
             }

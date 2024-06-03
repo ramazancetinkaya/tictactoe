@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusElement = document.getElementById('status');
     const playerXScoreElement = document.getElementById('playerXScore');
     const playerOScoreElement = document.getElementById('playerOScore');
+    const drawScoreElement = document.getElementById('drawScore');
     const modalElement = document.getElementById('modal');
     const modalMessageElement = document.getElementById('modal-message');
     const playAgainButton = document.getElementById('play-again');
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerMode = modeSelector.value; // Default: Player vs Player
     let playerXScore = 0;
     let playerOScore = 0;
+    let drawScore = 0;
 
     const winPatterns = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -84,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (message.includes('Wins')) {
             currentPlayer === 'X' ? playerXScore++ : playerOScore++;
+            updateScore();
+        } else {
+            drawScore++;
             updateScore();
         }
 
@@ -226,7 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const resetGame = () => {
         board = ['', '', '', '', '', '', '', '', ''];
-        currentPlayer = 'X';
         gameActive = true;
         statusElement.textContent = '';
         renderBoard();

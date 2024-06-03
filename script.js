@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateTurn = () => {
-        turnElement.textContent = `Turn: Player ${currentPlayer}`;
+        turnElement.textContent = `Turn: ${currentPlayer === 'X' ? 'Player' : 'AI'}`;
     };
 
     const checkWinner = () => {
@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateScore = () => {
         playerXScoreElement.textContent = `Player X: ${playerXScore}`;
         playerOScoreElement.textContent = `Player O: ${playerOScore}`;
+        drawScoreElement.textContent = `Draws: ${drawScore}`;
     };
 
     const showModal = (message) => {
@@ -211,7 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
             playerOScore = 0;
             updateScore();
         }
-
+        if (playerMode === 'avp' && currentPlayer === 'O') {
+            makeAIMove();
+        }
         resetGame();
     });
 
@@ -226,6 +229,13 @@ document.addEventListener('DOMContentLoaded', () => {
         gameActive = true;
         statusElement.textContent = '';
         renderBoard();
+
+        currentPlayer = playerMode === 'avp' ? 'O' : 'X';
+        updateTurn();
+
+        if (playerMode === 'avp' && currentPlayer === 'O') {
+            makeAIMove();
+        }
 
         if (playerMode === 'pva' && currentPlayer === 'O') {
             makeAIMove();

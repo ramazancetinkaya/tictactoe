@@ -1,162 +1,167 @@
-<h1 align="center">Tic Tac Toe</h1>
+# Tic-Tac-Toe Game
 
 <p align="center">
-  Welcome to the Tic Tac Toe Game! This project provides a simple and interactive Tic Tac Toe game implemented using HTML5, CSS, and JavaScript. The game supports both Player vs Player and Player vs AI modes.
+  <!-- License -->
+  <a href="https://github.com/ramazancetinkaya/tictactoe/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-009688.svg?style=for-the-badge">
+  </a>
+  <!-- Issues -->
+  <a href="https://github.com/ramazancetinkaya/tictactoe/issues">
+    <img alt="GitHub Issues" src="https://img.shields.io/github/issues/ramazancetinkaya/tictactoe?color=F44336&style=for-the-badge">
+  </a>
+  <!-- Stars -->
+  <a href="https://github.com/ramazancetinkaya/tictactoe/stargazers">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/ramazancetinkaya/tictactoe?color=FFEB3B&style=for-the-badge">
+  </a>
+  <!-- Forks -->
+  <a href="https://github.com/ramazancetinkaya/tictactoe/network">
+    <img alt="GitHub Forks" src="https://img.shields.io/github/forks/ramazancetinkaya/tictactoe?color=2196F3&style=for-the-badge">
+  </a>
+  <!-- Version -->
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-673AB7.svg?style=for-the-badge">
 </p>
-
 <p align="center">
-  <img src="https://lh3.googleusercontent.com/y3Mp0ZW7r7v8Mo7IutRsqFLMh2Z6C_VAN_npDVIo8eDBA7lNDXCu76ztwNgSEgtMoj1v7AFKX0idGOP-eRC3P7FqLKQgqMtKd7I=s0" alt="Snake Game Logo">
+  <!-- Languages -->
+  <img alt="HTML" src="https://img.shields.io/badge/HTML-5-FF5722.svg?style=for-the-badge">
+  <img alt="CSS" src="https://img.shields.io/badge/CSS-3-3F51B5.svg?style=for-the-badge">
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-ES6-FFC107.svg?style=for-the-badge">
 </p>
 
-<p align="center">
-  ⭐️ If you find this project useful, consider giving it a <b>star</b> to show your support. ⭐
-</p>
+## Overview
 
-## Table of Contents
-
-- [Demo](#demo)
-- [Features](#features)
-- [Installation](#getting-started)
-- [How to Play](#how-to-play)
-- [Game Modes](#game-modes)
-- [Minimax Algorithm](#minimax-algorithm)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [Credits](#credits)
-- [License](#license)
+A classic Tic-Tac-Toe game built with a modern, responsive design and a focus on a pure vanilla JavaScript, HTML, and CSS stack. Challenge yourself against a custom-built AI with three distinct difficulty levels, designed to provide a fun and challenging experience without relying on external frameworks.
 
 ## Demo
 
-[Live Demo](https://ramazancetinkaya.github.io/tictactoe/)
+View the live demo on GitHub Pages:
 
-Good luck, have fun!
+[![Demo](https://img.shields.io/badge/Demo-Live_on_GitHub_Pages-blue?style=for-the-badge&logo=github&logoColor=white)](https://ramazancetinkaya.github.io/tictactoe/)
 
 ## Features
 
-- **Player vs Player:** Play against a friend on the same device.
-- **Player vs AI:** Challenge the AI using the minimax algorithm for an exciting single-player experience.
-- **Dynamic Game Mode Selection:** Easily switch between Player vs Player and Player vs AI with a stylized select box.
-- **Score Tracking:** Keep track of the scores for Player X and Player O.
-- **Turn Indicator:** Display whose turn it is dynamically.
-- **Game Status:** Show the current game status dynamically.
+- Human vs. Computer(CPU)
+- 3 AI Difficulty Levels (Easy, Medium, Hard)
+- Player Symbol Selection (X or O)
+- Fully Responsive Design (Mobile, Tablet, Desktop)
+- Session Score and Tie Tracking
+- Variable AI Move Delay for Realistic Pacing
 
-## Getting Started
+### A closer look at AI movements
 
-### Prerequisites
+The AI was developed without using the traditional Minimax algorithm. Instead, it relies on a heuristic-based expert system that evaluates the game state based on a clear hierarchy of strategic priorities.
 
-Before you begin, ensure you have met the following requirements:
+### Hard Level
+The "Hard" AI acts as a near-perfect opponent by following a deterministic priority list for its moves:
+1.  **Win:** If it has an immediate winning move, it takes it.
+2.  **Block:** If the player has an immediate winning move, it blocks it.
+3.  **Fork:** It looks for opportunities to create two winning threats simultaneously.
+4.  **Block Fork:** It identifies and blocks the opponent's potential forking moves.
+5.  **Control Strategic Positions:** It prioritizes taking the center, then opposite corners, and finally any remaining corners before defaulting to side positions.
 
-- Web browser (Chrome, Firefox, Safari, etc.)
-- Git (optional, for cloning the repository)
+### Medium Level
+This AI uses a subset of the "Hard" AI's logic (Win, Block, Center Control) but introduces **probabilistic error injection**. There is a calculated chance (~25%) on each turn that it will ignore the optimal move and instead choose a random, often suboptimal, one. This simulates a skilled player who is prone to making occasional mistakes.
 
-### Installation
+### Easy Level
+The "Easy" AI is primarily a **reactive and defensive** agent. Its main priority is to block the player from winning. It only rarely checks for its own winning opportunities and will otherwise make random moves, simulating a beginner player.
 
-No installation is required. Simply clone or download the repository and open the `index.html` file in a web browser to play the game.
+## Screenshots
 
-1. Clone the repository:
+<div align="center">
 
-    ```bash
-    git clone https://github.com/ramazancetinkaya/tictactoe.git
-    ```
+| Main Menu Screenshot |
+| :---: |
+| ![Tic-Tac-Toe game main menu](./tictactoe-screenshots/tictactoe-mainmenu.png) |
+
+</div>
+
+## Installation and Usage
+
+### Option 1: Git Clone
+
+If you have Git installed, use the following command to clone the repository:
+
+```bash
+git clone https://github.com/ramazancetinkaya/tictactoe.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd tictactoe
+```
+
+Open `index.html` in your web browser to use the application.
+
+### Option 2: ZIP Download
+
+1. Visit the repository at `https://github.com/ramazancetinkaya/tictactoe`
+2. Click the "Code" button
+3. Select "Download ZIP" from the dropdown menu
+4. Extract the ZIP file to your preferred location
+5. Open the extracted folder
+6. Open `index.html` in your web browser to use the application
 
 ## How to Play
 
-- Choose the game mode from the dropdown (PvP or PvA).
-- Click on an empty cell to make a move.
-- The game indicates the current player's turn.
-- The game ends when a player wins, or it's a draw.
-- If you're playing against the AI, it will make its move automatically.    
+1.  **Choose Your Mark:** Select whether you want to play as `X` or `O`.
+2.  **Select Difficulty:** Pick a difficulty level for the AI opponent: `Easy`, `Medium`, or `Hard`.
+3.  **Start the Game:** Click the "New Game" button to begin.
+4.  **Make Your Move:** Click on any empty square on the board to place your mark.
+5.  **Goal:** Be the first to get three of your marks in a row—horizontally, vertically, or diagonally—to win the round.
 
-## Game Modes
-
-The game supports two modes:
-
-1. **Player vs Player (PvP):** Two players take turns to make moves.
-2. **Player vs AI (PvA):** Player plays against the AI using the Minimax algorithm.
-
-
-## Minimax Algorithm
-
-The Minimax algorithm is a decision-making algorithm commonly used in two-player turn-based games like Tic Tac Toe. It explores all possible moves on the game board and assigns a score to each move. The AI player then chooses the move with the highest score if it wants to maximize its chances of winning or the lowest score if it wants to minimize the opponent's chances.
-
-Here is a simple explanation of how the Minimax algorithm works:
-
-1. **Recursive Exploration:**
-   - The algorithm explores all possible moves by simulating each move and its possible outcomes.
-   - It alternates between maximizing and minimizing players at each level of the game tree.
-
-2. **Scoring:**
-   - A score is assigned to each terminal state of the game (win, lose, or draw).
-   - The algorithm backtracks these scores through the game tree, updating scores for each intermediate state.
-
-3. **Maximizing and Minimizing:**
-   - At each level, the algorithm maximizes the score for the maximizing player and minimizes the score for the minimizing player.
-   - The maximizing player aims to get the highest score, while the minimizing player aims to get the lowest score.
-
-4. **Best Move:**
-   - The algorithm chooses the move that leads to the best possible outcome for the player, based on the scores calculated.
-
-Here is a simple implementation of the Minimax algorithm in JavaScript:
-
-```javascript
-function minimax(board, depth, isMaximizing) {
-    // Base Case
-    const winner = checkWinner();
-    if (winner !== null) {
-        return scores[winner];
-    }
-
-    // Recursive Case
-    if (isMaximizing) {
-        let bestScore = -Infinity;
-        for (let i = 0; i < 9; i++) {
-            if (board[i] === '') {
-                board[i] = 'O';
-                let score = minimax(board, depth + 1, false);
-                board[i] = '';
-                bestScore = Math.max(score, bestScore);
-            }
-        }
-        return bestScore;
-    } else {
-        let bestScore = Infinity;
-        for (let i = 0; i < 9; i++) {
-            if (board[i] === '') {
-                board[i] = 'X';
-                let score = minimax(board, depth + 1, true);
-                board[i] = '';
-                bestScore = Math.min(score, bestScore);
-            }
-        }
-        return bestScore;
-    }
-}
-```
-
-## Technologies Used
+## Tech Stack
 
 - HTML5
-- CSS
-- JavaScript
+- CSS3 (Vanilla)
+- JavaScript (ES6+, Vanilla)
+- Bootstrap Icons
+
+## Browser Compatibility
+
+Tested and working on:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Android Chrome)
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to this project, feel free to fork the repository and submit a pull request with your changes.
-
-If you would like to contribute to the project, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature: `git checkout -b feature-name`.
-3. Commit your changes: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature-name`.
-5. Submit a pull request.
-
-For major changes, please open an issue first to discuss what you would like to change.
-
-## Credits
-
-This project is created by Ramazan Çetinkaya.
+Contributions are welcome! Please feel free to submit a pull request or open an issue for any enhancements or bug fixes.
 
 ## License
 
-This project is licensed under the MIT License. For more details, see the [LICENSE](LICENSE) file.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+```
+MIT License
+
+Copyright (c) 2025 Ramazan Çetinkaya
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## Author
+
+Developed and designed by **Ramazan Çetinkaya**
+- GitHub: [ramazancetinkaya](https://github.com/ramazancetinkaya)
+
+## Acknowledgements
+
+- Special thanks to the open-source community for inspiration

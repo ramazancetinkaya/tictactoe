@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main class="main-container" id="main-container">
+        
+        <section class="start-menu" id="start-menu">
+            <div class="icon-logo"><i class="bi bi-x-lg"></i><i class="bi bi-circle"></i></div>
+            <div class="picker-card">
+                <h4>Pick player 1's mark</h4>
+                <div class="picker-toggle">
+                    <button id="pick-x" class="active" aria-pressed="true"><i class="bi bi-x-lg"></i></button>
+                    <button id="pick-o" aria-pressed="false"><i class="bi bi-circle"></i></button>
+                </div>
+                <p>X GOES FIRST</p>
+            </div>
+            <div class="difficulty-card">
+                <h4>Choose difficulty</h4>
+                <div class="difficulty-buttons">
+                    <button class="btn" data-difficulty="easy">Easy</button>
+                    <button class="btn active" data-difficulty="medium">Medium</button>
+                    <button class="btn" data-difficulty="hard">Hard</button>
+                </div>
+            </div>
+            <button class="btn btn-yellow" id="new-game-btn">New Game (vs CPU)</button>
+        </section>
+
+        <section class="game-screen hidden" id="game-screen">
+            <header class="game-header">
+                <div class="icon-logo"><i class="bi bi-x-lg"></i><i class="bi bi-circle"></i></div>
+                <div class="turn-indicator" aria-live="polite">
+                    <i id="turn-icon" class="bi bi-x-lg"></i><span>TURN</span>
+                </div>
+                <button class="btn-restart" id="restart-btn" aria-label="Restart game"><i class="bi bi-arrow-counterclockwise"></i></button>
+            </header>
+
+            <div class="thinking-indicator" id="thinking-indicator">Computer is thinking...</div>
+
+            <div class="game-board" role="grid">
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="0"><i></i></div>
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="1"><i></i></div>
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="2"><i></i></div>
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="3"><i></i></div>
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="4"><i></i></div>
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="5"><i></i></div>
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="6"><i></i></div>
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="7"><i></i></div>
+                <div class="board-cell" role="gridcell" tabindex="0" data-index="8"><i></i></div>
+            </div>
+
+            <footer class="game-footer">
+                <div class="score-card" id="player-score-card">
+                    <p id="player-score-label">X (YOU)</p><div class="score" id="player-score">0</div>
+                </div>
+                <div class="score-card" id="tie-score-card">
+                    <p>TIES</p><div class="score" id="tie-score">0</div>
+                </div>
+                <div class="score-card" id="cpu-score-card">
+                    <p id="cpu-score-label">O (CPU)</p><div class="score" id="cpu-score">0</div>
+                </div>
+            </footer>
+        </section>
+    </main>
+    
+    <div class="modal-overlay" id="result-modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <p id="modal-result-text"></p>
+            <div id="modal-winner-announcement" class="modal-winner-announcement"></div>
+            <div class="modal-buttons">
+                <button class="btn btn-silver" id="quit-btn">Quit</button>
+                <button class="btn btn-yellow" id="next-round-btn">Next Round</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="restart-modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <h2>RESTART GAME?</h2>
+            <div class="modal-buttons">
+                <button class="btn btn-silver" id="cancel-restart-btn">No, Cancel</button>
+                <button class="btn btn-yellow" id="confirm-restart-btn">Yes, Restart</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
